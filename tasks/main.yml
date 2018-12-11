@@ -1,0 +1,10 @@
+- name: install systemd-setenv unit file
+  template: src=systemd-setenv.service.j2 dest=/lib/systemd/system/systemd-setenv.service
+
+- name: enable systemd-setenv
+  systemd:
+    name: systemd-setenv
+    enabled: yes
+
+- name: Make sure systemd-setenv is running
+  systemd: state=started name=systemd-setenv
