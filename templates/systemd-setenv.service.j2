@@ -1,0 +1,8 @@
+[Unit]
+Description=Transfers /etc/environment to systemd
+
+[Service]
+ExecStart=/bin/bash -c "/bin/systemctl set-environment `/bin/cat /etc/environment | /bin/egrep -v '^\s*(#|$)'`"
+
+[Install]
+WantedBy=multi-user.target
